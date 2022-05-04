@@ -1,3 +1,6 @@
 __pycache__/
 .DS_Store
 .vscode/
+
+testing/tweet-v2-example.json
+payload-1-20220424153627.json

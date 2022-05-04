@@ -3,8 +3,8 @@
 # [✔] Create class to connect to Recent search API with pagination.
 # [✔] PUT new response payloads in S3 bucket (object name to reflect request count + current date time)
 # [✔] New data in S3 bucket triggers Lambda function to process and store the data in a MySQL DB (RDS).
-# [ ] Develop more complext schema and multiple tables to store all fields and expansions.
-# [ ] Figure out infrastructure as code layer.
+# [...] Develop schema for Tweets table.
+# [...] Develop schema for other tables (users, annotations, geo, etc.) 
 
 # ============================================================================
 # To set your environment variables in the command line run the following line:
