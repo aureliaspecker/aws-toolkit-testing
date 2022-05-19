@@ -34,7 +34,7 @@ sql_polls = "CREATE table polls(poll_id VARCHAR(50) NOT NULL, option_1 VARCHAR(1
 
 sql_media = "CREATE table media(media_key VARCHAR(50) NOT NULL, type VARCHAR(50) NOT NULL, url VARCHAR(300), duration_ms INT, height INT, preview_image_url VARCHAR(300), view_count INT, width INT, alt_text VARCHAR(300), PRIMARY KEY (media_key))"
 
-sql_place = "CREATE table place(place_id VARCHAR(50) NOT NULL, full_name VARCHAR(200) NOT NULL, country VARCHAR(200), country_code VARCHAR(20), name VARCHAR(200), place_type VARCHAR(50), PRIMARY KEY (place_id))"
+sql_places = "CREATE table places(place_id VARCHAR(50) NOT NULL, full_name VARCHAR(200) NOT NULL, country VARCHAR(200), country_code VARCHAR(20), name VARCHAR(200), place_type VARCHAR(50), PRIMARY KEY (place_id))"
 
 cursor.execute(sql_context_annotations)
 
@@ -60,7 +60,7 @@ cursor.execute(sql_polls)
 
 cursor.execute(sql_media)
 
-cursor.execute(sql_place)
+cursor.execute(sql_places)
 
 connection.commit()
 
