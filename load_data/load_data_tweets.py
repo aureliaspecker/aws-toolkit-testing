@@ -1,18 +1,23 @@
 import json
 import pymysql
+import os
 
-# Replace details below, between quotation marks 
-ENDPOINT=""
-USER=""
-REGION=""
-DBNAME=""
+from dotenv import load_dotenv
+load_dotenv(verbose=True)  # Throws error if it can't find .env file
 
-with open('') as json_file:
+ENDPOINT=os.getenv("endpoint")
+USER=os.getenv("user")
+REGION=os.getenv("region")
+DBNAME=os.getenv("dbname")
+PASSWORD=os.getenv("password")
+FILENAME = os.getenv("filename")
+
+with open(FILENAME) as json_file:
     tweet_data = json.load(json_file)["data"]
     # print(tweet_data)
 
 # Insert password below, between quotation marks
-connection = pymysql.connect(host=ENDPOINT, user=USER, passwd="", db=DBNAME)
+connection = pymysql.connect(host=ENDPOINT, user=USER, passwd=PASSWORD, db=DBNAME)
 cursor = connection.cursor()
 
 sql = "REPLACE INTO tweets (tweet_id, tweet_text, author_id, conversation_id, created_at, geo_place_id, in_reply_to_user_id, lang, like_count, reply_count, quote_count, retweet_count, possibly_sensitive, reply_settings, source, tweet_url) VALUES \n"

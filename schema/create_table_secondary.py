@@ -1,13 +1,17 @@
 import pymysql
+import os
 
-# Replace details below, between quotation marks 
-ENDPOINT=""
-USER=""
-REGION=""
-DBNAME=""
+from dotenv import load_dotenv
+load_dotenv(verbose=True)  # Throws error if it can't find .env file
+
+ENDPOINT=os.getenv("endpoint")
+USER=os.getenv("user")
+REGION=os.getenv("region")
+DBNAME=os.getenv("dbname")
+PASSWORD=os.getenv("password")
 
 # Insert password below, between quotation marks
-connection = pymysql.connect(host=ENDPOINT, user=USER, passwd="", db=DBNAME)
+connection = pymysql.connect(host=ENDPOINT, user=USER, passwd=PASSWORD, db=DBNAME)
 cursor = connection.cursor()
 
 sql_context_annotations = "CREATE table context_annotations (tweet_id VARCHAR(50) NOT NULL, domain_id VARCHAR(50), domain_name VARCHAR(50), domain_description VARCHAR(200), entity_id VARCHAR(50), entity_name VARCHAR(50), PRIMARY KEY (tweet_id))"
@@ -30,7 +34,7 @@ sql_attachments_polls = "CREATE table attachments_polls(tweet_id VARCHAR(50) NOT
 
 sql_attachments_media = "CREATE table attachments_media(tweet_id VARCHAR(50) NOT NULL, media_key VARCHAR(50), PRIMARY KEY (tweet_id))"
 
-sql_polls = "CREATE table polls(poll_id VARCHAR(50) NOT NULL, option_1 VARCHAR(100) NOT NULL, option_2 VARCHAR(200) NOT NULL, option_3 VARCHAR(200), option_4 VARCHAR(200), duration_minutes INT, end_datetime DATETIME, PRIMARY KEY (poll_id))"
+sql_polls = "CREATE table polls(poll_id VARCHAR(50) NOT NULL, option_1 VARCHAR(100) NOT NULL, votes_1 INT, option_2 VARCHAR(200) NOT NULL, votes_2 INT, option_3 VARCHAR(200), votes_3 INT, option_4 VARCHAR(200), votes_4 INT, duration_minutes INT, end_datetime DATETIME, voting_status VARCHAR(10), PRIMARY KEY (poll_id))"
 
 sql_media = "CREATE table media(media_key VARCHAR(50) NOT NULL, type VARCHAR(50) NOT NULL, url VARCHAR(300), duration_ms INT, height INT, preview_image_url VARCHAR(300), view_count INT, width INT, alt_text VARCHAR(300), PRIMARY KEY (media_key))"
 

@@ -1,17 +1,22 @@
 import json
 import pymysql
+import os
 
-# Replace details below, between quotation marks 
-ENDPOINT=""
-USER=""
-REGION=""
-DBNAME=""
+from dotenv import load_dotenv
+load_dotenv(verbose=True)  # Throws error if it can't find .env file
 
-with open('') as json_file:
+ENDPOINT=os.getenv("endpoint")
+USER=os.getenv("user")
+REGION=os.getenv("region")
+DBNAME=os.getenv("dbname")
+PASSWORD=os.getenv("password")
+FILENAME = os.getenv("filename")
+
+with open(FILENAME) as json_file:
     media_data = json.load(json_file)["includes"]["media"]
 
 # Insert password below, between quotation marks
-connection = pymysql.connect(host=ENDPOINT, user=USER, passwd="", db=DBNAME)
+connection = pymysql.connect(host=ENDPOINT, user=USER, passwd=PASSWORD, db=DBNAME)
 cursor = connection.cursor()
 
 sql = "REPLACE INTO media (media_key, type, url, duration_ms, height, preview_image_url, view_count, width, alt_text) VALUES \n"
