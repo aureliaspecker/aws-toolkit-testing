@@ -16,7 +16,6 @@ with open(FILENAME) as json_file:
     tweet_data = json.load(json_file)["data"]
     # print(tweet_data)
 
-# Insert password below, between quotation marks
 connection = pymysql.connect(host=ENDPOINT, user=USER, passwd=PASSWORD, db=DBNAME)
 cursor = connection.cursor()
 
@@ -62,7 +61,7 @@ for tweet in tweet_data:
     sql += f"({tweet_id}, {tweet_text}, {author_id}, {conversation_id}, {created_at}, {geo_place_id}, {in_reply_to_user_id}, {lang}, {like_count}, {reply_count}, {quote_count}, {retweet_count}, {possibly_sensitive}, {reply_settings}, {source}, {tweet_url}), \n"
 
 sql = sql[:-3] + ";"
-print(sql.count)
+# print(sql.count)
 print(sql)
      
 cursor.execute(sql)

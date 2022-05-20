@@ -15,7 +15,6 @@ FILENAME = os.getenv("filename")
 with open(FILENAME) as json_file:
     polls_data = json.load(json_file)["includes"]["polls"]
 
-# Insert password below, between quotation marks
 connection = pymysql.connect(host=ENDPOINT, user=USER, passwd=PASSWORD, db=DBNAME)
 cursor = connection.cursor()
 
@@ -71,15 +70,15 @@ for poll in polls_data:
     except:
         voting_status = 'NULL'
     
-    try: 
-        print(option_3)  
-    except: 
+    if option_3 in globals():
+        pass
+    else: 
         option_3 = 'NULL'
         votes_3 = 'NULL'
 
-    try: 
-        print(option_4)  
-    except: 
+    if option_4 in globals():
+        pass
+    else: 
         option_4 = 'NULL'
         votes_4 = 'NULL'
 

@@ -15,7 +15,6 @@ FILENAME = os.getenv("filename")
 with open(FILENAME) as json_file:
     place_data = json.load(json_file)["includes"]["places"]
 
-# Insert password below, between quotation marks
 connection = pymysql.connect(host=ENDPOINT, user=USER, passwd=PASSWORD, db=DBNAME)
 cursor = connection.cursor()
 
